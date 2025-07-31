@@ -17,7 +17,6 @@ import {
   TableIcon,
   UserCircleIcon,
 } from "../icons/index";
-import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
   name: string;
@@ -29,8 +28,43 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
-    name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+    name: "Inicio",
+    path: "/",
+  },
+  {
+    icon: <GridIcon />,
+    name: "Chat",
+    path: "/blank",
+  },
+  {
+    icon: <GridIcon />,
+    name: "Agenda",
+    path: "/blank",
+  },
+  {
+    icon: <GridIcon />,
+    name: "Reservar",
+    path: "/blank",
+  },
+  {
+    icon: <GridIcon />,
+    name: "Ajustes",
+    path: "/blank",
+  },
+  {
+    icon: <GridIcon />,
+    name: "F.A.Q",
+    path: "/fqa",
+  },
+  {
+    icon: <GridIcon />,
+    name: "Términos y condiciones",
+    path: "/terminos",
+  },
+  {
+    icon: <GridIcon />,
+    name: "Políticas",
+    path: "/politicas",
   },
   {
     icon: <CalenderIcon />,
@@ -39,7 +73,7 @@ const navItems: NavItem[] = [
   },
   {
     icon: <UserCircleIcon />,
-    name: "User Profile",
+    name: "Tu perfil",
     path: "/profile",
   },
 
@@ -374,7 +408,6 @@ const AppSidebar: React.FC = () => {
             </div>
           </div>
         </nav>
-        {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}
       </div>
     </aside>
   );
