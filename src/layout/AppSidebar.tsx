@@ -16,6 +16,12 @@ import {
   PlugInIcon,
   TableIcon,
   UserCircleIcon,
+  InfoIcon,
+  DocsIcon,
+  ChatIcon,
+  TimeIcon,
+  UserIcon
+  
 } from "../icons/index";
 
 type NavItem = {
@@ -32,37 +38,38 @@ const navItems: NavItem[] = [
     path: "/",
   },
   {
-    icon: <GridIcon />,
+    icon: <ChatIcon />,
     name: "Chat",
     path: "/blank",
   },
+
   {
-    icon: <GridIcon />,
+    icon: <UserCircleIcon />,
+    name: "Tu perfil",
+    path: "/profile",
+  },
+  {
+    icon: <CalenderIcon />,
     name: "Agenda",
     path: "/blank",
   },
   {
-    icon: <GridIcon />,
+    icon: < TimeIcon />,
     name: "Reservar",
     path: "/blank",
   },
   {
-    icon: <GridIcon />,
-    name: "Ajustes",
-    path: "/blank",
-  },
-  {
-    icon: <GridIcon />,
+    icon: <InfoIcon />,
     name: "F.A.Q",
-    path: "/fqa",
+    path: "/faq",
   },
   {
-    icon: <GridIcon />,
+    icon: <ListIcon />,
     name: "Términos y condiciones",
     path: "/terminos",
   },
   {
-    icon: <GridIcon />,
+    icon: <DocsIcon />,
     name: "Políticas",
     path: "/politicas",
   },
@@ -70,11 +77,6 @@ const navItems: NavItem[] = [
     icon: <CalenderIcon />,
     name: "Calendar",
     path: "/calendar",
-  },
-  {
-    icon: <UserCircleIcon />,
-    name: "Tu perfil",
-    path: "/profile",
   },
 
   {
