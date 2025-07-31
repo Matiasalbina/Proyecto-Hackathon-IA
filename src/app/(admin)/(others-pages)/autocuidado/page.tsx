@@ -10,6 +10,9 @@ interface Ejercicio {
   titulo: string;
   imagen: string;
   contenido: string;
+  duracion: string; 
+  rating: number;
+  descripcion:string;
 }
 
 export default function AutoCuidado() {
