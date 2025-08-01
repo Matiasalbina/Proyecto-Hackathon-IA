@@ -1,20 +1,30 @@
 import Link from "next/link";
 import React from "react";
+import { ChevronLeftIcon } from "@/icons";
 
 interface BreadcrumbProps {
   pageTitle: string;
+  onVolver?: () => void;
 }
 
-const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle }) => {
+const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle, onVolver }) => {
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-      <h2
-        className="text-xl font-semibold text-gray-800 dark:text-white/90"
-        x-text="pageName"
-      >
+      <div className="flex gap-4">
+      {onVolver && (
+          <button
+            onClick={onVolver}
+            className="inline-flex items-center text-sm text-blue-600 hover:underline"
+          >
+            <ChevronLeftIcon className="mr-1 h-4 w-4" />
+          </button>
+        )}
+      <h2 className="text-xl font-semibold text-gray-800 dark:text-white/90"
+        x-text="pageName">
         {pageTitle}
       </h2>
-      <nav>
+      </div>
+      <nav className="hidden sm:block">
         <ol className="flex items-center gap-1.5">
           <li>
             <Link
