@@ -7,6 +7,7 @@ import { profesionales } from "@/data/profesionales";
 
 interface Doctor {
   id: number;
+  precio:string;
   nombre: string;
   especialidad: string;
   imagen: string;
@@ -27,7 +28,11 @@ export default function Doctores() {
 
   return (
     <div>
-      <PageBreadcrumb pageTitle="Doctores" />
+      <PageBreadcrumb
+        pageTitle={doctorSeleccionado ? doctorSeleccionado.especialidad : "Doctores"}
+        onVolver={doctorSeleccionado ? handleVolver : undefined}
+      />
+
       {!doctorSeleccionado ? (
         <ListaDoctores onSelectDoctor={handleSelectDoctor} />
       ) : (
