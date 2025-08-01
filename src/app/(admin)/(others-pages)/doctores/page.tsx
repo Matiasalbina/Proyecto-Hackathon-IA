@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadCrumb from "@/components/common/PageBreadCrumb";
 import ListaDoctores from "@/components/ui/doctores/ListaDoctores";
 import DetalleDoctor from "@/components/ui/doctores/DetalleDoctor";
 import { profesionales } from "@/data/profesionales";
@@ -28,7 +28,7 @@ export default function Doctores() {
 
   return (
     <div>
-      <PageBreadcrumb
+      <PageBreadCrumb
         pageTitle={doctorSeleccionado ? doctorSeleccionado.especialidad : "Doctores"}
         onVolver={doctorSeleccionado ? handleVolver : undefined}
       />
