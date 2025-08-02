@@ -8,6 +8,7 @@ import FormularioElegirPlan from "@/components/bienvenida/FormularioElegirPlan";
 import ContactosGuardadosExito from "@/components/bienvenida/ContactosGuardadosExito";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import EmergencyHelp from "@/components/views/EmergencyHelp";
 
 import FormularioContactos from "@/components/bienvenida/FormularioContactos";
 
@@ -19,7 +20,7 @@ export default function IngresoPage() {
     | "formularioEdad"
     | "formularioElegirPlan"
     | "formularioContactos"
-    | "contactosGuardados" 
+    | "contactosGuardados"
     | "cuenta";
   const [step, setStep] = useState<Step>("inicio");
   const [nombre, setNombre] = useState<string>("");
@@ -54,9 +55,9 @@ export default function IngresoPage() {
     }
   };
   const handleNombreSubmit = (datos: { nombre: string }) => {
-  setNombre(datos.nombre);
-  setStep("formularioEdad");
-};
+    setNombre(datos.nombre);
+    setStep("formularioEdad");
+  };
   const handleSeleccionEdad = (edad: "18+" | "13-17") => {
     setStep("formularioElegirPlan");
   };
@@ -70,11 +71,10 @@ export default function IngresoPage() {
 
   const router = useRouter();
 
-
   return (
     <main className="flex h-screen flex-col lg:flex-row">
       {/* Imagen del logo */}
-      <div className="flex items-center justify-center w-full flex-1 lg:h-auto lg:w-1/2 bg-gray-100 dark:bg-gray-800 p-8">
+      <div className="flex w-full flex-1 items-center justify-center bg-gray-100 p-8 lg:h-auto lg:w-1/2 dark:bg-gray-800">
         <Link href="/" className="">
           <Image
             width={154}
@@ -86,35 +86,40 @@ export default function IngresoPage() {
         </Link>
       </div>
 
-      <div className="flex items-start lg:items-center justify-center w-full flex-1 lg:h-auto lg:w-1/2 p-10">
-  {step === "inicio" || step === "preguntas" ? (
-    <Bienvenida
-      appName={textos[step].appName}
-      titulo={textos[step].titulo}
-      description={textos[step].description}
-      buttonText={textos[step].buttonText}
-      onStart={handleStartClick}
-    />
-  ) : step === "formularioNombre" ? (
-    <FormularioNombre onSubmit={handleNombreSubmit} />
-  ) : step === "formularioEdad" ? (
-    <FormularioEdad nombre={nombre} onSeleccionEdad={handleSeleccionEdad} />
-  ) : step === "formularioElegirPlan" ? (
-    <FormularioElegirPlan onSeleccionPlan={handleSeleccionPlan} />
-  ) : step === "formularioContactos" ? (
-     <FormularioContactos onGuardar={() => setStep("contactosGuardados")} />
-  ) : step === "contactosGuardados" ? (  
-    <ContactosGuardadosExito />
-  ) : step === "cuenta" ? (
-    <Bienvenida
-      titulo={textos[step].titulo}
-      appName={textos.cuenta.appName}
-      description={textos.cuenta.description}
-      buttonText={textos.cuenta.buttonText}
-      onStart={() => router.push("/")}
-    />
-  ) : null}
-</div>
+      <div className="flex w-full flex-1 items-start justify-center p-10 lg:h-auto lg:w-1/2 lg:items-center">
+        {step === "inicio" || step === "preguntas" ? (
+          <Bienvenida
+            appName={textos[step].appName}
+            titulo={textos[step].titulo}
+            description={textos[step].description}
+            buttonText={textos[step].buttonText}
+            onStart={handleStartClick}
+          />
+        ) : step === "formularioNombre" ? (
+          <FormularioNombre onSubmit={handleNombreSubmit} />
+        ) : step === "formularioEdad" ? (
+          <FormularioEdad
+            nombre={nombre}
+            onSeleccionEdad={handleSeleccionEdad}
+          />
+        ) : step === "formularioElegirPlan" ? (
+          <FormularioElegirPlan onSeleccionPlan={handleSeleccionPlan} />
+        ) : step === "formularioContactos" ? (
+          <FormularioContactos
+            onGuardar={() => setStep("contactosGuardados")}
+          />
+        ) : step === "contactosGuardados" ? (
+          <ContactosGuardadosExito />
+        ) : step === "cuenta" ? (
+          <Bienvenida
+            titulo={textos[step].titulo}
+            appName={textos.cuenta.appName}
+            description={textos.cuenta.description}
+            buttonText={textos.cuenta.buttonText}
+            onStart={() => router.push("/")}
+          />
+        ) : null}
+      </div>
     </main>
   );
 }
