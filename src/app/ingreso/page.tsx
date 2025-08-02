@@ -8,6 +8,7 @@ import FormularioElegirPlan from "@/components/bienvenida/FormularioElegirPlan";
 import ContactosGuardadosExito from "@/components/bienvenida/ContactosGuardadosExito";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import ImgIngreso from "../../../public/images/ingreso/ingreso.png"
 
 import FormularioContactos from "@/components/bienvenida/FormularioContactos";
 
@@ -26,7 +27,7 @@ export default function IngresoPage() {
 
   const textos = {
     inicio: {
-      appName: "Intum",
+      appName: "Yunguen",
       titulo: undefined,
       description:
         "Estamos aquí para ayudarte a reducir los niveles de estrés y cuidar mejor de ti.",
@@ -76,13 +77,20 @@ export default function IngresoPage() {
       {/* Imagen del logo */}
       <div className="flex items-center justify-center w-full flex-1 lg:h-auto lg:w-1/2 bg-gray-100 dark:bg-gray-800 p-8">
         <Link href="/" className="">
-          <Image
+        <Image
             width={154}
             height={32}
-            className=""
+            className="mx-auto mb-3"
             src="./images/logo/logo.svg"
             alt="Logo"
+            
           />
+        <Image
+            className="w-full h-auto"
+            src={ImgIngreso}
+            alt="imagen ingreso"
+          />
+          
         </Link>
       </div>
 
@@ -104,7 +112,9 @@ export default function IngresoPage() {
   ) : step === "formularioContactos" ? (
      <FormularioContactos onGuardar={() => setStep("contactosGuardados")} />
   ) : step === "contactosGuardados" ? (  
-    <ContactosGuardadosExito />
+    <ContactosGuardadosExito
+     onStart={() => router.push("/")}
+     />
   ) : step === "cuenta" ? (
     <Bienvenida
       titulo={textos[step].titulo}

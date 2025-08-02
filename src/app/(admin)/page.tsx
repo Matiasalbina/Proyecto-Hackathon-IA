@@ -9,7 +9,7 @@ import DemographicCard from "@/components/ecommerce/DemographicCard";
 
 export const metadata: Metadata = {
   title:
-    "Intum - Reduce tu ansiedad",
+    "Yunguen - Reduce tu ansiedad",
   description: "Este proyecto es parte de la Hackathon 2025 de Desafio LATAM",
 };
 

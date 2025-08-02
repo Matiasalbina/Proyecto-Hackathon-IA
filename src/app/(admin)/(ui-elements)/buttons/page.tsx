@@ -22,7 +22,7 @@ export default function Buttons() {
             <Button size="sm" variant="primary">
               Button Text
             </Button>
-            <Button size="md" variant="primary">
+            <Button size="md" variant="outline">
               Button Text
             </Button>
           </div>
@@ -30,7 +30,7 @@ export default function Buttons() {
         {/* Primary Button with Start Icon */}
         <ComponentCard title="Primary Button with Left Icon">
           <div className="flex items-center gap-5">
-            <Button size="sm" variant="primary" startIcon={<BoxIcon />}>
+            <Button size="sm" variant="outline" startIcon={<BoxIcon />}>
               Button Text
             </Button>
             <Button size="md" variant="primary" startIcon={<BoxIcon />}>
