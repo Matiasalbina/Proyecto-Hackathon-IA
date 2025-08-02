@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import PageBreadCrumb from "@/components/common/PageBreadCrumb";
 import ListaDoctores from "@/components/ui/doctores/ListaDoctores";
 import DetalleDoctor from "@/components/ui/doctores/DetalleDoctor";
 import { profesionales } from "@/data/profesionales";
 
 interface Doctor {
   id: number;
+  precio:string;
   nombre: string;
   especialidad: string;
   imagen: string;
@@ -27,7 +28,11 @@ export default function Doctores() {
 
   return (
     <div>
-      <PageBreadcrumb pageTitle="Doctores" />
+      <PageBreadCrumb
+        pageTitle={doctorSeleccionado ? doctorSeleccionado.especialidad : "Doctores"}
+        onVolver={doctorSeleccionado ? handleVolver : undefined}
+      />
+
       {!doctorSeleccionado ? (
         <ListaDoctores onSelectDoctor={handleSelectDoctor} />
       ) : (
