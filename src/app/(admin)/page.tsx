@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { EcommerceMetrics } from "@/components/ecommerce/EcommerceMetrics";
 import React from "react";
-import MonthlyTarget from "@/components/ecommerce/MonthlyTarget";
-import MonthlySalesChart from "@/components/ecommerce/MonthlySalesChart";
-import StatisticsChart from "@/components/ecommerce/StatisticsChart";
 import RecentOrders from "@/components/ecommerce/RecentOrders";
-import DemographicCard from "@/components/ecommerce/DemographicCard";
+import CustomCard from "@/components/ecommerce/CustomCard";
+import CustomCard2 from "@/components/ecommerce/CustomCard2";
+import { CalendarClock } from "lucide-react";
+import { CalendarPlus } from "lucide-react";
+import CustomCardEjercicios from "@/components/ecommerce/CustomCardEjercicios";
+
 
 export const metadata: Metadata = {
   title:
@@ -16,27 +17,19 @@ export const metadata: Metadata = {
 export default function Ecommerce() {
   return (
     <div className="grid grid-cols-12 gap-4 md:gap-6">
-      <div className="col-span-12 space-y-6 xl:col-span-7">
-        <EcommerceMetrics />
-
-        <MonthlySalesChart />
+      <div className="col-span-12 xl:col-span-4">
+        <CustomCard url="/blank" color="6E80E2" backgroundImage="/images/cards/hablemos.png" />
       </div>
-
-      <div className="col-span-12 xl:col-span-5">
-        <MonthlyTarget />
+      <div className="col-span-12 xl:col-span-4">
+        <CustomCard2 url="" color="C2E3EC" backgroundImage="" text="Próximas citas" icon={<CalendarClock size={40} strokeWidth={1.5} />}/>
       </div>
-
-      <div className="col-span-12">
-        <StatisticsChart />
+    <div className="col-span-12 xl:col-span-4">
+        <CustomCard2 url="doctores" color="F3CFDB" backgroundImage="" text="Agendar" icon={<CalendarPlus size={40} strokeWidth={1.5} />}/>
       </div>
-
-      <div className="col-span-12 xl:col-span-5">
-        <DemographicCard />
-      </div>
-
-      <div className="col-span-12 xl:col-span-7">
-        <RecentOrders />
+      <div className="col-span-12 xl:col-span-12">
+        <CustomCardEjercicios url="autocuidado"/>
       </div>
     </div>
   );
 }
+
