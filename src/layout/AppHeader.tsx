@@ -6,7 +6,7 @@ import { useSidebar } from "@/context/SidebarContext";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
-import EmergencyHelp from "@/components/views/EmergencyHelp";
+import EmergencyHelp from "@/components/BotonEmergencia/EmergencyHelp";
 
 const AppHeader: React.FC = () => {
   const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
