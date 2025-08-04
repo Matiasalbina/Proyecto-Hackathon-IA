@@ -1,4 +1,4 @@
-import EmergencyHelp from "@/components/views/EmergencyHelp";
+import EmergencyHelp from "@/components/BotonEmergencia/EmergencyHelp";
 
 export default function HelpPage() {
   return (

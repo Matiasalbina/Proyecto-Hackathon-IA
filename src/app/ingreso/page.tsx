@@ -8,7 +8,6 @@ import FormularioElegirPlan from "@/components/bienvenida/FormularioElegirPlan";
 import ContactosGuardadosExito from "@/components/bienvenida/ContactosGuardadosExito";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import EmergencyHelp from "@/components/views/EmergencyHelp";
 
 import FormularioContactos from "@/components/bienvenida/FormularioContactos";
 
