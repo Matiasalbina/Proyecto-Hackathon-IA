@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent({
-      contents: [{ parts: [{ text: prompt }] }],
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
     });
 
     const response = result.response.text();
