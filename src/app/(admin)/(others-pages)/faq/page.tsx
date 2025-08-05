@@ -27,7 +27,7 @@ export default function FAQ() {
           </li>
           <li>
             <strong>¿Qué pasa con mis datos personales?</strong><br />
-            Tus datos están protegidos. Solo se utilizan para ofrecerte una mejor experiencia dentro de la app y nunca se comparten con terceros sin tu consentimiento. Consulta nuestra <a href="/politica-de-privacidad" className="underline text-blue-600">Política de Privacidad</a> para más detalles.
+            Tus datos están protegidos. Solo se utilizan para ofrecerte una mejor experiencia dentro de la app y nunca se comparten con terceros sin tu consentimiento. Consulta nuestra <a href="/politicas" className="underline text-blue-600">Política de Privacidad</a> para más detalles.
           </li>
           <li>
             <strong>¿Necesito estar conectado a internet para usar la app?</strong><br />
