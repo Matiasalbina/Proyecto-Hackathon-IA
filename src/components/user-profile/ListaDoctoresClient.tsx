@@ -21,7 +21,7 @@ export default function ListaDoctoresClient() {
     <ul>
       {lista.map((doc) => (
         <li key={doc.id}>
-          {doc.name} - {doc.email}
+          {doc.nombre} - {doc.profesion}
         </li>
       ))}
     </ul>

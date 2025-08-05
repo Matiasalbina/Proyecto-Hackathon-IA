@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    domains: ['objectstorage.us-phoenix-1.oraclecloud.com'],
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },

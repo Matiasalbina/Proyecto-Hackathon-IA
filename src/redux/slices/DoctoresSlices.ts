@@ -1,19 +1,24 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+const PLACEHOLDER_IMAGE = "/images/placeholder.png"; // ruta local a imagen por defecto
+
 // Fetch de doctores (usuarios) desde API pública
 export const fetchDoctores = createAsyncThunk(
   'doctores/fetchDoctores',
   async () => {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/users')
-    return response.data
+    const response = await axios.get('https://g0818aead2485ee-instanciaagosto.adb.us-phoenix-1.oraclecloudapps.com/ords/wks_agosto/api/doctores')
+    return response.data.items // 👈 Solo devolvemos el array
   }
 )
 
 interface Doctor {
   id: number
-  name: string
-  email: string
+  nombre: string
+  profesion: string
+  descripcion: string
+  imagen_url: string | null
+  precio_consulta: number
 }
 
 interface DoctoresState {
@@ -40,7 +45,11 @@ const doctoresSlice = createSlice({
       })
       .addCase(fetchDoctores.fulfilled, (state, action) => {
         state.loading = false
-        state.lista = action.payload
+        // Asegurar que imagen_url siempre tenga valor válido
+        state.lista = action.payload.map((doc: Doctor) => ({
+          ...doc,
+          imagen_url: doc.imagen_url ? doc.imagen_url : PLACEHOLDER_IMAGE,
+        }))
       })
       .addCase(fetchDoctores.rejected, (state, action) => {
         state.loading = false
@@ -50,4 +59,3 @@ const doctoresSlice = createSlice({
 })
 
 export default doctoresSlice.reducer
-
