@@ -39,7 +39,7 @@ export default function Politicas() {
             </li>
             <li>
               <strong>7. Contacto:</strong><br />
-              Si tienes preguntas sobre esta política o deseas ejercer tus derechos de privacidad, contáctanos a: <a href="mailto:soporte@tuapp.com" className="underline text-blue-600">soporte@tuapp.com</a>.
+              Si tienes preguntas sobre esta política o deseas ejercer tus derechos de privacidad, contáctanos.
             </li>
           </ul>
 
