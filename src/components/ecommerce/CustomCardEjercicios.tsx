@@ -12,9 +12,7 @@ const CustomCardEjercicios: React.FC<CardProps> = ({ url }) => {
     <>
     <Link href={url}>
         <div
-          className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mb-0 px-4 pt-4 pb-11"
-          style={{ background: 'var(--color--brand-terciario)' }}
-        >
+          className="rounded-2xl border border-gray-200 bg-brand-500 dark:border-gray-800 dark:bg-white/[0.03] mb-0 px-4 pt-4 pb-11">
                       <div className="grid grid-cols-12 sm:grid-cols-10 md:grid-cols-12 lg:grid-cols-12 gap-4">
                           <div className="col-span-1 sm:col-span-2 md:col-span-1 lg:col-span-1">
                             <Image

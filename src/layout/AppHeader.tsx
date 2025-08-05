@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import EmergencyHelp from "@/components/BotonEmergencia/EmergencyHelp";
+import Button from "@/components/ui/button/Button";
 
 const AppHeader: React.FC = () => {
   const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
@@ -110,13 +111,7 @@ const AppHeader: React.FC = () => {
               alt="Logo"
             />
           </Link>
-          <Link
-            title="Botón de pánico"
-            href="/helpButton"
-            className="dropdown-toggle flex h-11 items-center justify-center rounded-md border border-red-700 bg-pink-400 px-5 text-white shadow-md transition-colors hover:bg-red-700 lg:hidden dark:border-red-400 dark:bg-red-500 dark:hover:bg-red-600"
-          >
-            ¡Ayuda!
-          </Link>
+         
 
           <button
             onClick={toggleApplicationMenu}
@@ -179,13 +174,13 @@ const AppHeader: React.FC = () => {
           } shadow-theme-md w-full items-center justify-between gap-4 px-5 py-4 lg:flex lg:justify-end lg:px-0 lg:shadow-none`}
         >
           <div className="2xsm:gap-3 flex items-center gap-2">
-            <Link
-              title="Botón de pánico"
-              href="/helpButton"
-              className="dropdown-toggle flex h-11 items-center justify-center rounded-md border border-red-700 bg-pink-400 px-5 text-white shadow-md transition-colors hover:bg-red-700 dark:border-red-400 dark:bg-red-500 dark:hover:bg-red-600"
-            >
-              ¡Ayuda!
-            </Link>
+             <Link
+            title="Botón de pánico"
+            href="/helpButton">
+            <Button size="sm" style={{ backgroundColor: "#000000", color: "#ffffff" }}>
+              Ayuda
+            </Button>
+          </Link>
 
             {/* <!-- Dark Mode Toggler --> */}
             <ThemeToggleButton />
