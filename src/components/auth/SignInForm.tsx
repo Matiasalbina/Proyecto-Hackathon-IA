@@ -49,7 +49,7 @@ export default function SignInForm() {
           className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
         >
           <ChevronLeftIcon />
-          Back to dashboard
+          Regresar a la app
         </Link>
       </div>
       <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
@@ -59,7 +59,7 @@ export default function SignInForm() {
               Sign In
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Enter your email and password to sign in!
+             ¡Introduce tu email y contraseña para iniciar sesión!
             </p>
           </div>
           <form onSubmit={handleSubmit}>
@@ -77,12 +77,12 @@ export default function SignInForm() {
               </div>
               <div>
                 <Label>
-                  Password <span className="text-error-500">*</span>
+                  Contrasela <span className="text-error-500">*</span>
                 </Label>
                 <div className="relative">
                   <Input
                     type={showPassword ? "text" : "password"}
-                    placeholder="Enter your password"
+                    placeholder="Ingresa tu contraseña"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -102,19 +102,19 @@ export default function SignInForm() {
                 <div className="flex items-center gap-3">
                   <Checkbox checked={isChecked} onChange={setIsChecked} />
                   <span className="text-theme-sm block font-normal text-gray-700 dark:text-gray-400">
-                    Keep me logged in
+                    Manten mi sesión iniciada
                   </span>
                 </div>
                 <Link
                   href="/reset-password"
                   className="text-brand-500 hover:text-brand-600 dark:text-brand-400 text-sm"
                 >
-                  Forgot password?
+                  ¿Olvidaste la contraseña?
                 </Link>
               </div>
               <div>
                 <Button type="submit" className="w-full" size="sm">
-                  Sign in
+                  Ingresar
                 </Button>
               </div>
             </div>
@@ -122,12 +122,12 @@ export default function SignInForm() {
 
           <div className="mt-5">
             <p className="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
-              Don&apos;t have an account?{" "}
+              ¿No tienes una cuenta?{" "}
               <Link
                 href="/signup"
                 className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
               >
-                Sign Up
+                Inscríbete
               </Link>
             </p>
           </div>

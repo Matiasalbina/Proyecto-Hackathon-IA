@@ -53,40 +53,24 @@ export default function SignUpForm() {
           className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
         >
           <ChevronLeftIcon />
-          Back to dashboard
+          Regresar a la app
         </Link>
       </div>
       <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
         <div>
           <div className="mb-5 sm:mb-8">
             <h1 className="text-title-sm sm:text-title-md mb-2 font-semibold text-gray-800 dark:text-white/90">
-              Sign Up
+              Incribirse
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Enter your email and password to sign up!
+              ¡Introduce tu email y contraseña para registrarte!
             </p>
           </div>
 
           {/* Social buttons y línea divisoria se mantienen igual */}
           <div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
-              <button className="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
-                Sign up with Google
-              </button>
-              <button className="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
-                Sign up with X
-              </button>
-            </div>
-            <div className="relative py-3 sm:py-5">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-200 dark:border-gray-800"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="bg-white p-2 text-gray-400 sm:px-5 sm:py-2 dark:bg-gray-900">
-                  Or
-                </span>
-              </div>
-            </div>
+           
+           
 
             {/* Formulario de registro */}
             <form onSubmit={handleSubmit}>
@@ -94,7 +78,7 @@ export default function SignUpForm() {
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div className="sm:col-span-1">
                     <Label>
-                      First Name<span className="text-error-500">*</span>
+                      Nombre<span className="text-error-500">*</span>
                     </Label>
                     <Input
                       type="text"
@@ -109,7 +93,7 @@ export default function SignUpForm() {
                   </div>
                   <div className="sm:col-span-1">
                     <Label>
-                      Last Name<span className="text-error-500">*</span>
+                      Apellido<span className="text-error-500">*</span>
                     </Label>
                     <Input
                       type="text"
@@ -174,13 +158,13 @@ export default function SignUpForm() {
                     onChange={setIsChecked}
                   />
                   <p className="inline-block font-normal text-gray-500 dark:text-gray-400">
-                    By creating an account you agree to the{" "}
+                    Al crear la cuentas aceptas los{" "}
                     <span className="text-gray-800 dark:text-white/90">
-                      Terms and Conditions,
+                      Terminos y condiciones,
                     </span>{" "}
-                    and our{" "}
+                    y nuestras{" "}
                     <span className="text-gray-800 dark:text-white">
-                      Privacy Policy
+                     Políticas de privacidad
                     </span>
                   </p>
                 </div>
@@ -189,7 +173,7 @@ export default function SignUpForm() {
                     type="submit"
                     className="bg-brand-500 shadow-theme-xs hover:bg-brand-600 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium text-white transition"
                   >
-                    Sign Up
+                   Inscribirse
                   </button>
                 </div>
               </div>
@@ -197,12 +181,12 @@ export default function SignUpForm() {
 
             <div className="mt-5">
               <p className="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
-                Already have an account?
+                ¿Ya tienes una cuenta?
                 <Link
                   href="/signin"
                   className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
                 >
-                  Sign In
+                 Ingresar
                 </Link>
               </p>
             </div>
