@@ -12,9 +12,9 @@ export default function Terminos() {
           <h3 className="mb-4 font-semibold text-gray-800 text-theme-xl dark:text-white/90 sm:text-2xl">
            Términos y Condiciones de Uso
           </h3>
-          <p>Última actualización: [31 de julio de 2025]</p>
+          <p>Última actualización: 31 de julio de 2025</p>
           <p className="text-sm text-left text-gray-500 dark:text-gray-400 sm:text-base py-2">
-            Bienvenido/a a [Nombre de la App] (en adelante, “la App”), una aplicación diseñada para apoyar a personas que desean gestionar su ansiedad a través de herramientas digitales y contenidos psicoeducativos. Al acceder y utilizar esta App, aceptas los siguientes Términos y Condiciones. Te pedimos que los leas atentamente antes de utilizar nuestros servicios.
+            Bienvenido/a a Yungen, una aplicación diseñada para apoyar a personas que buscan herramientas que las ayuden a sobrellevar su ansiedad con la ayuda de herramientas digitales y contenidos psicoeducativos. Al acceder y utilizar esta App, aceptas los siguientes Términos y Condiciones. Te pedimos que los leas atentamente antes de utilizar nuestros servicios.
           </p>
           <ul className="list-disc pl-6 space-y-4 py-2 text-gray-800 text-left">
             <li>
@@ -32,7 +32,7 @@ export default function Terminos() {
                 </ul>
             </li>
             <li>
-                <strong>Privacidad y Datos Personales:</strong> Nos comprometemos a proteger tu información personal. Para más detalles, revisa nuestra <a href="/politica-de-privacidad" className="underline text-blue-600">Política de Privacidad</a>. Los datos que nos proporciones serán utilizados únicamente para mejorar tu experiencia dentro de la App y no serán compartidos con terceros sin tu consentimiento explícito.
+                <strong>Privacidad y Datos Personales:</strong> Nos comprometemos a proteger tu información personal. Para más detalles, revisa nuestra <a href="/politicas" className="underline text-blue-600">Política de Privacidad</a>. Los datos que nos proporciones serán utilizados únicamente para mejorar tu experiencia dentro de la App y no serán compartidos con terceros sin tu consentimiento explícito.
             </li>
             <li>
                 <strong>Limitación de Responsabilidad:</strong> La App no ofrece garantías de ningún tipo respecto a resultados en la gestión de la ansiedad. Su uso es voluntario y bajo responsabilidad del usuario. En ningún caso los desarrolladores serán responsables por daños directos o indirectos derivados del uso de esta App.
