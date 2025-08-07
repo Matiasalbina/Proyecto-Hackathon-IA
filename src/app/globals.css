@@ -739,3 +739,14 @@ span.flatpickr-weekday,
   cursor: grabbing; /* Changes the cursor to indicate dragging */
 }
 
+.chat{
+  position: relative;
+}
+.chat-button{
+  position: sticky;
+  bottom: 0px;
+  width: 100%;
+}
+.area-chat{
+   height: calc(100vh - 300px);
+}
