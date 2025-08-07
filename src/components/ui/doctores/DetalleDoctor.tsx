@@ -1,33 +1,43 @@
-'use client';
-import React, { useState } from 'react';
-import Image from 'next/image';
-import ComponentCard from '@/components/common/ComponentCard';
-import Button from '../button/Button';
-import { CalendarClock, Star } from 'lucide-react';
-import { Modal } from '../modal';
-import HorariosDisponibles from '@/components/ui/doctores/HorariosDisponibles';
-import { useModal } from '@/hooks/useModal';
-import CitaCreada from './CitaCreada';
-
-interface Doctor {
-  id: number;
-  precio: string;
-  nombre: string;
-  especialidad: string;
-  imagen: string;
-  descripcion: string;
-}
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "@/redux/store";
+import { fetchDoctores } from "@/redux/slices/DoctoresSlices";
+import Image from "next/image";
+import Button from "../button/Button";
+import { CalendarClock, Star } from "lucide-react";
+import { Modal } from "../modal";
+import HorariosDisponibles from "@/components/ui/doctores/HorariosDisponibles";
+import { useModal } from "@/hooks/useModal";
+import CitaCreada from "./CitaCreada";
 
 interface DetalleDoctorProps {
-  doctor: Doctor;
+  doctorId: number;          // Recibimos solo el id del doctor
   onVolver: () => void;
 }
 
-export default function DetalleDoctor({ doctor }: DetalleDoctorProps) {
-  const { isOpen, openModal, closeModal: closeModalFromHook  } = useModal();
-  const [horaSeleccionada, setHoraSeleccionada] = useState<string | null>(null);
-  const [horaConfirmada, setHoraConfirmada] = useState(true);
+export default function DetalleDoctor({ doctorId, onVolver }: DetalleDoctorProps) {
+  const dispatch = useDispatch<AppDispatch>();
+  const { isOpen, openModal, closeModal: closeModalFromHook } = useModal();
 
+  const [horaSeleccionada, setHoraSeleccionada] = React.useState<string | null>(null);
+  const [horaConfirmada, setHoraConfirmada] = React.useState(true);
+
+  // Obtener lista doctores y estado
+  const { lista: doctores, loading, error } = useSelector((state: RootState) => state.doctores);
+
+  // Buscar doctor seleccionado
+  const doctor = React.useMemo(() => doctores.find((d) => d.id === doctorId), [doctores, doctorId]);
+
+  // Si la lista está vacía, hacer fetch
+  useEffect(() => {
+    if (!doctores.length) {
+      dispatch(fetchDoctores());
+    }
+  }, [dispatch, doctores.length]);
+
+  if (loading) return <p>Cargando doctor...</p>;
+  if (error) return <p className="text-red-600">Error: {error}</p>;
+  if (!doctor) return <p>Doctor no encontrado</p>;
 
   const handleSeleccionHora = (hora: string) => {
     setHoraSeleccionada(hora);
@@ -39,12 +49,11 @@ export default function DetalleDoctor({ doctor }: DetalleDoctorProps) {
   };
 
   const closeModal = () => {
-  setHoraConfirmada(true);  // Resetea la vista para que al abrir se muestre el selector
-  closeModalFromHook();     // Cierra el modal
-};
-  
+    setHoraConfirmada(true);
+    closeModalFromHook();
+  };
 
-  // Rango de los próximos 7 días
+  // Rango de próximos días (3 días)
   const today = new Date();
   const end = new Date();
   end.setDate(today.getDate() + 3);
@@ -54,12 +63,13 @@ export default function DetalleDoctor({ doctor }: DetalleDoctorProps) {
   };
 
   return (
-    <ComponentCard title="">
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 p-6">
+    <div className="p-6 max-w-4xl mx-auto">
+     
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
         <div>
-          {doctor.imagen ? (
+          {doctor.imagen_url ? (
             <Image
-              src={doctor.imagen}
+              src={doctor.imagen_url}
               alt={doctor.nombre}
               width={400}
               height={300}
@@ -73,63 +83,59 @@ export default function DetalleDoctor({ doctor }: DetalleDoctorProps) {
         </div>
 
         <div>
-          <div className="grid grid-cols-12 gap-2">
-            <h3 className="col-span-8 text-lg font-semibold text-gray-800 dark:text-white/90">
-              {doctor.nombre}
-            </h3>
-            <p className="col-span-4 text-right text-gray-700 font-medium">
-              $ {doctor.precio}
-            </p>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">{doctor.nombre}</h3>
+          <p className="text-right text-gray-700 font-medium">
+            {new Intl.NumberFormat("es-CL", {
+              style: "currency",
+              currency: "CLP",
+              minimumFractionDigits: 0
+            }).format(Number(doctor.precio_consulta))}
+          </p>
+          <p className="mt-1 font-normal text-gray-500 dark:text-gray-400">{doctor.profesion}</p>
 
-            <p className="col-span-12 mt-1 font-normal text-gray-500 dark:text-gray-400 text-theme-sm">
-              {doctor.especialidad}
-            </p>
-
-            <div className="col-span-6 flex items-center gap-2">
-              <CalendarClock size={14} />
-              <p className="text-sm font-medium">Lun - Vie: 9am - 6pm</p>
+          <div className="flex justify-between mt-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2">
+              <CalendarClock size={14} /> Lun - Vie: 9am - 6pm
             </div>
-
-            <div className="col-span-6 flex items-center justify-end gap-2">
-              <Star size={14} className="text-yellow-500 fill-yellow-500" />
-              <p className="text-sm font-medium">4.5 / 5</p>
+            <div className="flex items-center gap-2">
+              <Star size={14} className="text-yellow-500 fill-yellow-500" /> 4.5 / 5
             </div>
           </div>
 
-          <p className="mt-2 text-gray-500 dark:text-gray-400 text-theme-md">
-            {doctor.descripcion}
-          </p>
+          <p className="mt-4 text-gray-600">{doctor.descripcion}</p>
 
-          <Button startIcon={<CalendarClock />} onClick={() => {
-            setHoraConfirmada(true); // Por si acaso, al abrir resetea
-            openModal();
-          }} className="mt-6 text-blue-600">
+          <Button
+            startIcon={<CalendarClock />}
+            onClick={() => {
+              setHoraConfirmada(true);
+              openModal();
+            }}
+            className="mt-6 text-blue-600"
+          >
             Agendar hora
           </Button>
 
           <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4 flex justify-center">
             {horaConfirmada ? (
-                <div className="p-4 lg:p-6">
-              <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
-                Selecciona un horario disponible
-              </h4>
-              <HorariosDisponibles rango={rango} onSeleccionar={handleSeleccionHora} />
+              <div className="p-4 lg:p-6">
+                <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Selecciona un horario disponible</h4>
+                <HorariosDisponibles rango={rango} onSeleccionar={handleSeleccionHora} />
 
-              <div className="flex justify-end gap-3 mt-6">
-                <Button size="sm" variant="outline" onClick={closeModal}>
-                  Cancelar
-                </Button>
-                <Button size="sm" onClick={handleSave}>
-                  Confirmar hora
-                </Button>
+                <div className="flex justify-end gap-3 mt-6">
+                  <Button size="sm" variant="outline" onClick={closeModal}>
+                    Cancelar
+                  </Button>
+                  <Button size="sm" onClick={handleSave} disabled={!horaSeleccionada}>
+                    Confirmar hora
+                  </Button>
+                </div>
               </div>
-            </div>
-              ) : (
-             <CitaCreada />
+            ) : (
+              <CitaCreada />
             )}
           </Modal>
         </div>
       </div>
-    </ComponentCard>
+    </div>
   );
 }

@@ -6,15 +6,22 @@ export default function BlankPage() {
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState("");
 
+  const systemMessage = `
+Eres un asistente amable, empático y experto en ansiedad. Siempre respondes en español. Tus respuestas son claras, breves y fáciles de entender. Primero, valida lo que dice el usuario y acompaña con palabras de apoyo. No des demasiada información o ejercicios en la primera respuesta, espera a que el usuario muestre interés para ir avanzando poco a poco.  Varía tu lenguaje para no repetir frases exactas ni lugares comunes como "Estoy aquí para escucharte". Usa sinónimos o formas diferentes de expresar apoyo.
+Nunca digas que no puedes ayudar. Tu objetivo es acompañar, tranquilizar y empoderar al usuario con consejos prácticos en pequeños pasos. Pero también ten en cuenta que si detectas palabras graves como "suicidio" o "hacerme daño" debes pedirle a la persona que puedes darle un ejercicio pero que este chat es solo para acompañarlo y ayudarlo a reducir su ansiedad, pero que por favor agende una cita médica para recibir mayor ayuda.
+`;
+
   const handleSend = async () => {
     if (!input.trim()) return;
 
     setMessages((prev) => [...prev, `🧑‍💬: ${input}`]);
 
+    const prompt = `${systemMessage}\nUsuario: ${input}\nRespuesta:`;
+
     const res = await fetch("/api/gemini", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: input }),
+      body: JSON.stringify({ prompt }),
     });
 
     const data = await res.json();
